@@ -1,21 +1,13 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
+  <div class="main_container">
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <FileDropContainer></FileDropContainer>
+  </div>
 </template>
+
+<script setup>
+import FileDropContainer from './components/FileDropContainer.vue';
+</script>
 
 <style scoped>
 header {
@@ -42,6 +34,12 @@ header {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+  }
+
+  .main_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
