@@ -1,5 +1,5 @@
 <template>
-    <div class="file_drop_main_container" style="align-items: center;">
+    <div class="file_drop_main_container">
         <div class="name_container"><p>{{ "Wybrany plik" }}: {{ selectedFileName }}</p></div>
         <div v-if="!selectedFile" id="file-drop-container">
             <form enctype="multipart/form-data">
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div v-else style="display: flex;flex-direction: row;">
-            <button class="add_button" @click="clearSelectedFile"><p>Dodaj plik</p></button>
+            <button class="add_button" @click="emitAddedFileSingnal"><p>Dodaj plik</p></button>
             <button class="clear_button" @click="clearSelectedFile"><p>Wyczyść plik</p></button>
         </div>
     </div>
@@ -23,11 +23,13 @@
 
 <script>
 export default {
+    name: 'FileDropContainer',
     data() {
         return {
             isDragging: false,
             selectedFile: null,
-            selectedFileName: "Brak wbranego pliku"
+            selectedFileName: "Brak wbranego pliku",
+            noSelectedFileString: "Brak wbranego pliku"
         }
     },
     methods: {
@@ -62,6 +64,11 @@ export default {
         clearSelectedFile() {
             this.selectedFile = null;
             this.selectedFileName = "Brak wbranego pliku";
+        },
+        emitAddedFileSingnal() {
+            this.$emit("newfileevent",this.selectedFileName);
+            this.selectedFileName = this.noSelectedFileString;
+            this.selectedFile = null;
         }
     }
 }
@@ -97,6 +104,7 @@ p {
 .name_container {
     display: flex;
     text-align: center; 
+    align-items: center;
     margin-bottom: 0.5rem;
     margin: 1%;
 }

@@ -1,19 +1,45 @@
 <template>
   <div class="main_container">
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <FileDropContainer></FileDropContainer>
+    <FilesDropContainer @newfileevent="updateLoadedFilesList"></FilesDropContainer>
+    <FilesHistoryContainer :filesList="filesList"></FilesHistoryContainer>
+    <button class="calculation_button" @click="startCalculations"> Oblicz </button>
+    <div style="font-size: 30px;"> Wynik: {{ resultScore }} zł</div>
+    <CalculationsHistory :historyTable="historyList"> </CalculationsHistory>
   </div>
 </template>
 
-<script setup>
-import FileDropContainer from './components/FileDropContainer.vue';
+<script>
+export default {
+  data() {
+        return {
+            filesList: [],
+            historyList: [{name: "halo"}],
+            resultScore: 0.0
+        }
+    },
+    methods: {
+      updateLoadedFilesList(fileName) {
+        this.filesList.push(fileName);
+      },
+      startCalculations() {
+        this.filesList.push("test");
+      }
+    }
+}
 </script>
 
 <style scoped>
 header {
   line-height: 1.5;
 }
-
+.calculation_button {
+  display: flex;
+  background-color: rgb(129, 166, 180);
+  font-size: 25px;
+  margin: 1%;
+  text-align: center;
+}
 .logo {
   display: block;
   margin: 0 auto 2rem;
