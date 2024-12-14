@@ -26,7 +26,7 @@ export default {
         if(this.filesList.length === 0)
           return;
         let fileName = this.filesList[0];
-        let url = `http://localhost:5240/api/processSelectedFile?filename=${fileName}`;
+        let url = `http://localhost:5000/api/processSelectedFile?filename=${fileName}`;
         fetch(url)
           .then(response => response.json())
           .then(data => {

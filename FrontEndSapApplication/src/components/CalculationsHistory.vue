@@ -10,7 +10,7 @@
             <div class="history_row" v-for="(historyRow,index) in historyTable">
                 <div class="history_column"> <p> {{ historyRow.number }} </p> </div>
                 <div class="history_column"> <p> {{ historyRow.formula }} </p> </div>
-                <div :class="historyRow.result > 0.01 ? 'history_column_green' : 'history_column_red'"> <p> {{ historyRow.result }} </p> </div>
+                <div :class="historyRow.result > 0.01 ? 'history_column_green' : 'history_column_red'"> <p> {{ historyRow.result }} zł </p> </div>
                 <div class="history_column"> <p> {{ historyRow.reason }} </p> </div>
             </div>
         </div>
