@@ -5,7 +5,7 @@
     <FilesHistoryContainer :filesList="filesList"></FilesHistoryContainer>
     <button class="calculation_button" @click="startCalculations"> Oblicz </button>
     <div style="font-size: 30px;"> Wynik: {{ resultScore }} zł</div>
-    <CalculationsHistory :historyTable="historyList"> </CalculationsHistory>
+    <CalculationsHistory :historyTable="history"> </CalculationsHistory>
   </div>
 </template>
 
@@ -14,16 +14,23 @@ export default {
   data() {
         return {
             filesList: [],
-            historyList: [{name: "halo"}],
+            history: [],
             resultScore: 0.0
         }
     },
     methods: {
       updateLoadedFilesList(fileName) {
-        this.filesList.push(fileName);
+        this.filesList.push(fileName.substr(0,fileName.indexOf('.')));
       },
       startCalculations() {
-        this.filesList.push("test");
+        let fileName = this.filesList[0];
+        let url = `http://localhost:5240/api/processSelectedFile?filename=${fileName}`;
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            this.history = data.history;
+            this.resultScore = data.cost;
+          });
       }
     }
 }

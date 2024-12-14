@@ -8,10 +8,10 @@
                 <div class="history_column"> Uzasadnienie </div>
             </div>
             <div class="history_row" v-for="(historyRow,index) in historyTable">
-                <div class="history_column" style="text-align: center;"> <p> {{ historyRow.name }} </p> </div>
                 <div class="history_column"> <p> {{ historyRow.name }} </p> </div>
-                <div class="history_column"> <p> {{ historyRow.name }} </p> </div>
-                <div class="history_column"> <p> {{ historyRow.name }} </p> </div>
+                <div class="history_column"> <p> {{ historyRow.formula }} </p> </div>
+                <div class="history_column"> <p> {{ historyRow.result }} </p> </div>
+                <div class="history_column"> <p> {{ historyRow.reason }} </p> </div>
             </div>
         </div>
     </div>
