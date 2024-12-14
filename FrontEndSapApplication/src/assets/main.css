@@ -20,10 +20,11 @@ a,
   }
 }
 
-@media (max-height: 1080px) {
+@media (min-height: 600px) {
   body {
     display: flex;
     place-items: center;
+    min-width: 800px;
   }
 
   #app {
