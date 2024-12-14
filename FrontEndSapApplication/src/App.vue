@@ -23,6 +23,8 @@ export default {
         this.filesList.push(fileName.substr(0,fileName.indexOf('.')));
       },
       startCalculations() {
+        if(this.filesList.length === 0)
+          return;
         let fileName = this.filesList[0];
         let url = `http://localhost:5240/api/processSelectedFile?filename=${fileName}`;
         fetch(url)
@@ -30,6 +32,7 @@ export default {
           .then(data => {
             this.history = data.history;
             this.resultScore = data.cost;
+            this.filesList = [];
           });
       }
     }

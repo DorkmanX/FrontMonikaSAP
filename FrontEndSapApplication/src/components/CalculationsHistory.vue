@@ -8,9 +8,9 @@
                 <div class="history_column"> Uzasadnienie </div>
             </div>
             <div class="history_row" v-for="(historyRow,index) in historyTable">
-                <div class="history_column"> <p> {{ historyRow.name }} </p> </div>
+                <div class="history_column"> <p> {{ historyRow.number }} </p> </div>
                 <div class="history_column"> <p> {{ historyRow.formula }} </p> </div>
-                <div class="history_column"> <p> {{ historyRow.result }} </p> </div>
+                <div :class="historyRow.result > 0.01 ? 'history_column_green' : 'history_column_red'"> <p> {{ historyRow.result }} </p> </div>
                 <div class="history_column"> <p> {{ historyRow.reason }} </p> </div>
             </div>
         </div>
@@ -46,6 +46,7 @@ export default {
     flex-direction: column;
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
 }
 .history_row {
     display: flex;
@@ -65,5 +66,27 @@ export default {
     flex: 1;
     align-items: center;
     justify-content: center;
+}
+.history_column_green {
+    display: flex;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-color: aqua;
+    font: 20px white bold;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+}
+.history_column_red {
+    display: flex;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-color: aqua;
+    font: 20px white bold;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: #c24e3c;
 }
 </style>
