@@ -1,14 +1,20 @@
-const { app, BrowserWindow } = require('electron');
-
-let mainWindow;
-app.whenReady().then(() => {
-    mainWindow = new BrowserWindow({
-      width: 800,
-      height: 600,
-      webPreferences: {
-        nodeIntegration: true,
-      },
-    });
-    mainWindow.loadFile('dist/index.html');  
-    //mainWindow.loadURL('http://localhost:3000');
-});
+const { app, BrowserWindow } = require("electron"); 
+function createWindow (){
+  
+const mainWindow = new BrowserWindow({  
+width: 800,  
+height: 600,  
+show: false,  
+backgroundColor: '#b37700'  })
+ 
+mainWindow.loadFile('index.html')  
+mainWindow.once('ready-to-show', mainWindow.show) } 
+app.whenReady().then(createWindow) 
+app.on('window-all-closed', () => {  
+if (process.platform !== 'darwin') {  
+app.quit()
+} })
+app.on('activate', () => {  
+if (BrowserWindow.getAllWindows().length === 0) {  
+createWindow()  
+}})

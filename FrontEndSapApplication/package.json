@@ -1,8 +1,38 @@
 {
   "name": "frontendsapapplication",
+  "description": "frontendsapapplication",
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "author": "Kamil",
+  "main": "main.js",
+  "updateURL": "frontendsapapplication",
+  "homepage": ".",
+  "build": {
+    "asar": false,
+    "productName": "frontendsapapplication",
+    "appId": "com.xxx.xxx",
+    "extends": null,
+    "files": [
+      {
+        "from": ".",
+        "to": ".",
+        "filter": [
+            "electron",
+            "images",
+            "node_modules",
+            "main.js",
+            "package.json"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "zip",
+        "dir"
+      ]
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
